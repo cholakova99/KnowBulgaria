@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-visited_choices = ["want to visit", "visited"]
+visited_choices = [("want to visit", "want to visit"), ("visited", "visited")]
 
 
 class Location(models.Model):
