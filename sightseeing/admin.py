@@ -1,5 +1,5 @@
 from django.contrib import admin
-from sightseeing.models import Location, VisitedLocation
+from sightseeing.models import Location, PersonalLocation
 
 
 @admin.register(Location)
@@ -7,6 +7,6 @@ class LocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'photo', 'rating')
 
 
-@admin.register(VisitedLocation)
-class VisitedLocationAdmin(admin.ModelAdmin):
+@admin.register(PersonalLocation)
+class PersonalLocationAdmin(admin.ModelAdmin):
     list_display = ('user', 'visited')
