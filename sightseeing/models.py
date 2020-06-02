@@ -5,10 +5,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 visited_choices = [("want to visit", "want to visit"), ("visited", "visited")]
 
 
+def location_directory_path(instance, filename):
+    return f'location_{instance.id}/{filename}'
+
+
 class Location(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to=location_directory_path)
 
 
 class PersonalLocation(models.Model):
