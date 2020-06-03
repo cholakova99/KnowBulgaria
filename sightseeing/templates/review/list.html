@@ -1,0 +1,12 @@
+{% extends "review/base.html" %} {% block content %}
+<a href="{% url 'sightseing:review:add' %}", style="color:red">Add new</a>
+
+{% if courses %}
+<ul>
+  {% for rev in review %}
+  <li><a href="{% url 'sightseing:review:detail' review.id %}", style="color:green">{{ review.location }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No reviwws yet.</strong></p>
+{% endif %} {% endblock %}

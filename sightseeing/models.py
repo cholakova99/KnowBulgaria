@@ -26,7 +26,7 @@ class PersonalLocation(models.Model):
 
 
 class Review(models.Model):
-    rating = models.FloatField([MinValueValidator(0), MaxValueValidator(5)])
+    rating = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
     text = models.TextField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
