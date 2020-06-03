@@ -1,7 +1,98 @@
-<h2> Add review </h2>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
 
-<form method="POST">
-    {% csrf_token %} 
-    {{ form.as_p }}
-    <input type="submit" name="Save">
-</form>
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+</style>
+</head>
+
+<body style="background-color: #fefbd8;">
+    <h2 style="color:red;"> Add review </h2>
+    <form method="POST" action="/action_page.php">
+        <input type="hidden" name="csrfmiddlewaretoken">
+        <div class="row">
+            <div class="col-25">   
+                <label for="id_location">Location:</label>
+                <select name="location" required id="id_location"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="id_rating">Rating:</label>
+                <input type="number" name="raitng" value="0" step="any" required id="id_rating">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25"> 
+                <label for="id_text">Text:</label>
+                <textarea name="text" cols="40" rows="10" required id="id_text"></textarea>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-25">
+                <label for="id_suggest">Would suggest:</label>
+                <input type="checkbox" name="suggest" id="id_suggest">
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" name="Save">
+        </div>
+    </form>
+</body>
+</html>
