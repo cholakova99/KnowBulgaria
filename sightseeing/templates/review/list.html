@@ -1,3 +1,4 @@
+{% extends "base.html" %} {% block content %}
 <a href="{% url 'sightseeing:review:add' %}", style="color:red">Add new</a>
 
 {% if review %}
@@ -8,4 +9,4 @@
 </ul>
 {% else %}
 <p><strong>No reviwws yet.</strong></p>
-{% endif %} 
+{% endif %} {% endblock %}
