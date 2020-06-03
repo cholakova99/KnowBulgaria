@@ -7,7 +7,7 @@ app_name = 'sightseeing'
 
 locations_patterns = [
     path('', location.LocationListView.as_view(), name='list'),
-    path('<int:pk>/', location.LocationDetailView.as_view(), name='detail')
+    path('<int:location_id>/', location.detail, name='detail')
 ]
 
 
