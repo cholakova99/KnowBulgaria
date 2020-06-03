@@ -62,14 +62,29 @@ input[type=submit] {
 </style>
 </head>
 
+<body style="background-color: #fefbd8">
+    <h2 style="color:red;"> Add review </h2>
+
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <input type="submit" name="Save" />
+    </form>
+</body>
+</html>
+<!-- 
 <body style="background-color: #fefbd8;">
     <h2 style="color:red;"> Add review </h2>
-    <form method="POST" action="/action_page.php">
+    <form method="POST">
         <input type="hidden" name="csrfmiddlewaretoken">
         <div class="row">
             <div class="col-25">   
                 <label for="id_location">Location:</label>
-                <select name="location" required id="id_location"></select>
+                <select required name="location" id="id_location">
+                    <option value="" disabled selected="selected"></option>
+                    {% for loc in location %}
+                        <option value="{{ loc.name }}">{{ loc.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
         </div>
         <div class="row">
@@ -95,4 +110,4 @@ input[type=submit] {
         </div>
     </form>
 </body>
-</html>
+</html> -->
