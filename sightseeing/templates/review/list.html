@@ -4,7 +4,7 @@
 {% if review %}
 <ul>
   {% for rev in review %}
-  <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.location }}</a></li>
+  <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.id }}) {{ rev.location }} - by {{ rev.user.username }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

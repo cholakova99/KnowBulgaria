@@ -1,6 +1,10 @@
+{% extends "base.html" %} {% block content %}
+
 <a href="{% url 'sightseeing:locations:list' %}">Locations</a>
 
 <ul>
   <li><a href="{% url 'sightseeing:review:add' %}">Add review</a></li>
   <li><a href="{% url 'sightseeing:review:list' %}">Reviews</a></li>
 </ul>
+
+{% endblock %}

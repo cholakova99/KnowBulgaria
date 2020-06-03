@@ -1,7 +1,28 @@
-{% extends "review/base.html" %} {% block content %}
-<h2><small>location:</small> {{ review.location }}</h2>
-<h2><small>rating:</small> {{ review.rating }}</h2>
-<h2><small>text:</small> {{ review.text }}</h2>
-<h2><small>suggest:</small> {{ review.suggest }}</h2>
-<h2><small>name:</small> {{ review.user.username }}</h2>
+{% extends "base.html" %} {% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'show-review-info.css' %}">
+<table>
+    <tr>
+        <th>Location:</th>
+        <td>{{ review.location }}</td>
+    </tr>
+    <tr>
+        <th>Rating:</th>
+        <td>{{ review.rating }}</td>
+    </tr>
+    <tr>
+        <th>Text:</th>
+        <td>{{ review.text }}</td>
+    </tr>
+    <tr>
+        <th>Suggest:</th>
+        <td>{{ review.suggest }}</td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td>{{ review.user.username }}</td>
+    </tr>
+</table>
 {% endblock %}
