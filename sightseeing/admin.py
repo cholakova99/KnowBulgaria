@@ -9,7 +9,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(PersonalLocation)
 class PersonalLocationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'location', 'visited')
+    list_display = ('user', 'location', 'status')
 
 
 @admin.register(Review)

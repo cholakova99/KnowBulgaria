@@ -1,7 +1,9 @@
 <ul>
     {% for location in locations %}
         <li>
-            {{ location.name }}
+            <a href="{% url 'sightseeing:locations:detail' location.id %}">
+                {{ location.name }}
+            </a>
         </li>
     {% empty %}
         <p>No locations yet! </p>

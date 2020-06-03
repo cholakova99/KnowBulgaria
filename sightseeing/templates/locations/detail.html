@@ -1,0 +1,19 @@
+<h1>{{ location.name }}</h1>
+<p>{{ location.description }}</p>
+<img src="{{ location.photo.url }}">
+
+
+<form method="post" id="change">
+    {% csrf_token %}
+    <select name="status" id="status">
+        <option selected="selected" disabled>Status:</option>
+        <option value="none">None</option>
+        <option value="want">Want to visit</option>
+        <option value="visited">Visited</option>
+    </select>
+    <button form="change">Change status</button>
+</form>
+
+{% if success %}
+<p>Changed successfully</p>
+{% endif %}
