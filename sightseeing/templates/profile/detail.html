@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'show-review-info.css' %}">
+<table>
+    <tr>
+        <th>User:</th>
+        <td>{{ profile.user.username }}</td>
+    </tr>
+    <tr>
+        <th>Location:</th>
+        {% if profile.address%}
+            <td>{{ profile.address }}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <th>Photo:</th>
+        {% if profile.photo %}
+            <td><img src="{{ profile.photo.url }}" width="100" height="100"></td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <th>Bio:</th>
+        {% if profile.bio %}
+            <td>{{ profile.bio }}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <th>Birthday:</th>
+        {% if profile.b_day %}
+            <td>{{ profile.b_day }}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    </tr>
+</table>
+
+{% endblock %}
