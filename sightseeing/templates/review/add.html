@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% extends "base.html" %} {% block content %}
 <html>
 <head>
 <style>
@@ -71,43 +72,4 @@ input[type=submit] {
     </form>
 </body>
 </html>
-<!-- 
-<body style="background-color: #fefbd8;">
-    <h2 style="color:red;"> Add review </h2>
-    <form method="POST">
-        <input type="hidden" name="csrfmiddlewaretoken">
-        <div class="row">
-            <div class="col-25">   
-                <label for="id_location">Location:</label>
-                <select required name="location" id="id_location">
-                    <option value="" disabled selected="selected"></option>
-                    {% for loc in location %}
-                        <option value="{{ loc.name }}">{{ loc.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="id_rating">Rating:</label>
-                <input type="number" name="raitng" value="0" step="any" required id="id_rating">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25"> 
-                <label for="id_text">Text:</label>
-                <textarea name="text" cols="40" rows="10" required id="id_text"></textarea>
-            </div>
-        </div>
-         <div class="row">
-            <div class="col-25">
-                <label for="id_suggest">Would suggest:</label>
-                <input type="checkbox" name="suggest" id="id_suggest">
-            </div>
-        </div>
-        <div class="row">
-            <input type="submit" name="Save">
-        </div>
-    </form>
-</body>
-</html> -->
+{% endblock %}

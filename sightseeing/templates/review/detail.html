@@ -1,7 +1,45 @@
-{% extends "review/base.html" %} {% block content %}
-<h2><small>location:</small> {{ review.location }}</h2>
-<h2><small>rating:</small> {{ review.rating }}</h2>
-<h2><small>text:</small> {{ review.text }}</h2>
-<h2><small>suggest:</small> {{ review.suggest }}</h2>
-<h2><small>name:</small> {{ review.user.username }}</h2>
+{% extends "base.html" %} {% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'show-review-info.css' %}">
+<table>
+    <tr>
+        <th>Location:</th>
+        <td>{{ review.location }}</td>
+    </tr>
+    <tr>
+        <th>Rating:</th>
+        <td>{{ review.rating }}</td>
+    </tr>
+    <tr>
+        <th>Text:</th>
+        <td>{{ review.text }}</td>
+    </tr>
+    <tr>
+        <th>Suggest:</th>
+        {% if review.suggest %}
+            <td><font color="green"></font> Yes </td>
+        {% else %}
+            <td> No </td>
+        {% endif %}
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td>{{ review.user.username }}</td>
+    </tr>
+</table>
+
+{% if all_reviews %}
+<ul>
+    <p><strong>Other reviews for that location:</strong>
+  {% for rev in all_reviews %}
+        <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.id }}) {{ rev.location }} - by {{ rev.user.username }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No other reviews for that location yet.</strong></p>
+{% endif %}
 {% endblock %}
+
+
