@@ -7,8 +7,8 @@
 
 {% if logged %}
 <a style="color:blue;text-align:center" href="{% url 'sightseeing:logout' %}">Log out</a>
-<a style="color:red;text-align:center" href="{% url 'sightseeing:profile:update' user.id %}">Update profile</a>
-<a style="color:red;text-align:center" href="{% url 'sightseeing:profile:detail' user.id %}">See profile</a>
+<a style="color:red;text-align:center" href="{% url 'sightseeing:profile:update' request.user.userprofile.id %}">Update profile</a>
+<a style="color:red;text-align:center" href="{% url 'sightseeing:profile:detail' request.user.userprofile.id %}">See profile</a>
 
 {% else %}
 <br>

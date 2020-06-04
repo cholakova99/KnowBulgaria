@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from sightseeing.models import Review, Location
+from sightseeing.models import Review, Location, UserProfile
 from django import forms
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required

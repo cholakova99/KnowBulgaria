@@ -23,14 +23,14 @@
 {% endif %}
 
 
-<ul>
+<ol>
 {% for review in reviews %}
-   <li><a href="{% url 'sightseeing:review:detail' review.id %}", style="color:green">{{ review.id }}) {{ review.location }} - by {{ review.user.username }}</a></li>
+   <li><a href="{% url 'sightseeing:review:detail' review.id %}", style="color:green"> {{ review.location }} - by {{ review.user.username }}</a></li>
 {% empty %}
     <p>
         No existing reviews for this location.        
     </p>
 {% endfor %}
-</ul>
+</ol>
 
 {% endblock %}

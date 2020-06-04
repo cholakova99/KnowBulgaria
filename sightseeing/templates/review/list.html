@@ -2,11 +2,11 @@
 <a href="{% url 'sightseeing:review:add' %}", style="color:red">Add new</a>
 
 {% if review %}
-<ul>
+<ol>
   {% for rev in review %}
-  <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.id }}) {{ rev.location }} - by {{ rev.user.username }}</a></li>
+  <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.location }} - by {{ rev.user.username }}</a></li>
   {% endfor %}
-</ul>
+</ol>
 {% else %}
 <p><strong>No reviwws yet.</strong></p>
 {% endif %} {% endblock %}

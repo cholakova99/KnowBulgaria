@@ -1,5 +1,6 @@
 from django.contrib import admin
 from sightseeing.models import Location, PersonalLocation, Review, UserProfile
+from django.contrib.auth.models import User
 
 
 @admin.register(Location)
@@ -20,3 +21,4 @@ class ReviewAdmin(admin.ModelAdmin):
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'address', 'photo', 'bio', 'b_day')
+
