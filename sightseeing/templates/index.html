@@ -1,10 +1,35 @@
+<style type="text/css">
+   div {
+  line-height: 2.5;
+}
+</style>
 {% extends "base.html" %} {% block content %}
 
 <a href="{% url 'sightseeing:locations:list' %}">Locations</a>
+<br>
+
+
+<table>
+    <tr>
+        {%for location in locations %}
+        <th><img src="{{ location.photo.url }}" width="200" height="200"></th>
+        {% endfor %}
+    </tr>
+    <tr>
+        {%for location in locations %}
+        <th><a href="{% url 'sightseeing:locations:detail' location.id%}">{{ location.name }}</a>
+        </th>
+        {% endfor %}
+    </tr>
+</table>
+<a href="{% url 'sightseeing:review:list' %}">Reviews</a></li>
 
 <ul>
-  <li><a href="{% url 'sightseeing:review:add' %}">Add review</a></li>
-  <li><a href="{% url 'sightseeing:review:list' %}">Reviews</a></li>
+    <p>Recent reviews:</p>
+    {% for review in reviews %}
+        <li><a href="{% url 'sightseeing:review:detail' review.id %}", style="color:green">{{ review.id }}) {{ review.location }} - by {{ review.user.username }}</a></li>
+  {% endfor %}
 </ul>
 
+<a href="{% url 'sightseeing:review:add' %}">Add review</a></li>  
 {% endblock %}

@@ -1,20 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from sightseeing.models import Review, Location
 from django import forms
-#from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 
 
 def list(request):
-    return render(request, 'review/list.html', {'review': Review.objects.all()})
+    logged = request.user.is_authenticated
+    return render(request, 'review/list.html', {'review': Review.objects.all(), 'logged': logged})
 
 
 def detail(request, review_id):
+    logged = request.user.is_authenticated
     review = get_object_or_404(Review, id=review_id)
     all_reviews = Review.objects.filter(location=review.location).exclude(id=review.id)
-    return render(request, 'review/detail.html', {'review': review, 'all_reviews': all_reviews})
+    return render(request, 'review/detail.html', {'review': review, 'all_reviews': all_reviews, 'logged': logged})
 
 
 class ReviewForm(forms.ModelForm):
@@ -25,6 +25,7 @@ class ReviewForm(forms.ModelForm):
 
 @login_required(login_url='sightseeing:login')
 def add_review(request):
+    logged = request.user.is_authenticated
     location = Location.objects.all()
     if request.method == "POST":
         data = request.POST
@@ -35,7 +36,7 @@ def add_review(request):
             new_review.save()
             return redirect(reverse('sightseeing:review:list'))
         else:
-            return render(request, 'review/add.html', {'form': form, 'location': location})
+            return render(request, 'review/add.html', {'form': form, 'location': location, 'logged': logged})
     else:
         form = ReviewForm()
-        return render(request, 'review/add.html', {'form': form, 'location': location})
+        return render(request, 'review/add.html', {'form': form, 'location': location, 'logged': logged})

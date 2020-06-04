@@ -1,3 +1,5 @@
+{% extends "base.html" %} {% block content %}
+
 <h1>{{ location.name }}</h1>
 {% if location.photo %}
 <img src="{{ location.photo.url }}" width="500" height="500">
@@ -23,13 +25,12 @@
 
 <ul>
 {% for review in reviews %}
-    <li>
-        {{ review.text }}
-        {{ review.rating }}
-    </li>
+   <li><a href="{% url 'sightseeing:review:detail' review.id %}", style="color:green">{{ review.id }}) {{ review.location }} - by {{ review.user.username }}</a></li>
 {% empty %}
     <p>
         No existing reviews for this location.        
     </p>
 {% endfor %}
 </ul>
+
+{% endblock %}

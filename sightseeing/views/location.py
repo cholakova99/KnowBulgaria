@@ -57,11 +57,12 @@ def add_to_list(request, location):
 
 
 def detail(request, location_id):
+    logged = request.user.is_authenticated
     location = get_object_or_404(Location, id=location_id)
     reviews = Review.objects.filter(location=location)
 
     if request.method == "POST":
         add_to_list(request, location)
-        return render(request, "locations/detail.html", {'location': location, 'reviews': reviews, 'success': True})
+        return render(request, "locations/detail.html", {'location': location, 'reviews': reviews, 'success': True, 'logged': logged})
     else:
-        return render(request, "locations/detail.html", {'location': location, 'reviews': reviews})
+        return render(request, "locations/detail.html", {'location': location, 'reviews': reviews, 'logged': logged})

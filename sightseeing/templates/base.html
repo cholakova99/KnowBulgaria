@@ -4,6 +4,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
 
 <a href="{% url 'sightseeing:index' %}">Home</a>
+
+{% if logged %}
+<a style="color:blue;text-align:center" href="{% url 'sightseeing:logout' %}">Log out</a>
+
+{% else %}
+<br>
+<a style="color:blue;text-align:center" href="{% url 'sightseeing:login' %}">Log in</a>
+<a style="color:blue;text-align:center" href="{% url 'sightseeing:signup' %}">Sign up</a>
+{% endif %}
+
 <br>
 {% block content %} {% endblock %}
 </div>

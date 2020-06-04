@@ -1,3 +1,6 @@
+{% extends "base.html" %} {% block content %}
+
+
 <form method="post" id="sort">
     {% csrf_token %}
     <select name="sort" id="sort">
@@ -27,3 +30,5 @@
         <p>No locations yet! </p>
     {% endfor %}
 </ul>
+
+{% endblock %}
