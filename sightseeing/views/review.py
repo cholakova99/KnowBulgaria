@@ -4,6 +4,7 @@ from django import forms
 #from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 def list(request):
@@ -12,17 +13,14 @@ def list(request):
 
 def detail(request, review_id):
     review = get_object_or_404(Review, id=review_id)
-    return render(request, 'review/detail.html', {'review': review})
+    all_reviews = Review.objects.filter(location=review.location).exclude(id=review.id)
+    return render(request, 'review/detail.html', {'review': review, 'all_reviews': all_reviews})
 
 
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('location', 'rating', 'text', 'suggest')
-
-    # def __init__(self, user, *args, **kargs):
-    #     self.user = user
-    #     super().__init__(*args, **kargs)
 
 
 @login_required(login_url='sightseeing:login')

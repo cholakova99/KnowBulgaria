@@ -18,11 +18,28 @@
     </tr>
     <tr>
         <th>Suggest:</th>
-        <td>{{ review.suggest }}</td>
+        {% if review.suggest %}
+            <td><font color="green"></font> Yes </td>
+        {% else %}
+            <td> No </td>
+        {% endif %}
     </tr>
     <tr>
         <th>Name:</th>
         <td>{{ review.user.username }}</td>
     </tr>
 </table>
+
+{% if all_reviews %}
+<ul>
+    <p><strong>Other reviews for that location:</strong>
+  {% for rev in all_reviews %}
+        <li><a href="{% url 'sightseeing:review:detail' rev.id %}", style="color:green">{{ rev.id }}) {{ rev.location }} - by {{ rev.user.username }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No other reviews for that location yet.</strong></p>
+{% endif %}
 {% endblock %}
+
+
