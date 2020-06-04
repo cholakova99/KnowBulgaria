@@ -1,3 +1,21 @@
+<form method="post" id="sort">
+    {% csrf_token %}
+    <select name="sort" id="sort">
+        <option selected="" disabled="">Sort by:</option>
+        <option value="name">Name</option>
+        <option value="rating">Rating</option>
+        <option value="reviews">Number of reviews</option>
+        <option value="visited">Most visited</option>
+        <option value="wanted">Most wanted to be visit</option>
+        {% if logged %}
+        <optgroup label="My activity:"></optgroup>
+        <option value="my_visited">Visited</option>
+        <option value="my_wanted">Want to visit</option>
+        {% endif %}
+    </select>
+    <button form="sort">Sort</button>
+</form>
+
 <ul>
     {% for location in locations %}
         <li>

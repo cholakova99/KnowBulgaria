@@ -1,5 +1,7 @@
 <h1>{{ location.name }}</h1>
+{% if location.photo %}
 <img src="{{ location.photo.url }}" width="500" height="500">
+{% endif %}
 <p>About {{ location.name }}: {{ location.description }}</p>
 
 
