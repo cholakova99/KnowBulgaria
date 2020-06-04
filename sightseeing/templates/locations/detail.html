@@ -1,6 +1,8 @@
 <h1>{{ location.name }}</h1>
-<p>{{ location.description }}</p>
-<img src="{{ location.photo.url }}">
+{% if location.photo %}
+<img src="{{ location.photo.url }}" width="500" height="500">
+{% endif %}
+<p>About {{ location.name }}: {{ location.description }}</p>
 
 
 <form method="post" id="change">
@@ -17,3 +19,17 @@
 {% if success %}
 <p>Changed successfully</p>
 {% endif %}
+
+
+<ul>
+{% for review in reviews %}
+    <li>
+        {{ review.text }}
+        {{ review.rating }}
+    </li>
+{% empty %}
+    <p>
+        No existing reviews for this location.        
+    </p>
+{% endfor %}
+</ul>
