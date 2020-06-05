@@ -1,3 +1,17 @@
+
+<div>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'logo.css' %}">
+<style type="text/css">
+
+  body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+</style>
+
 <h2>Log in system</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
@@ -20,3 +34,6 @@
     <button type="submit">Log in</button>
     <a href="{% url 'sightseeing:signup' %}">Sign up</a>
   </form>
+
+{% block content %} {% endblock %}
+</div>
