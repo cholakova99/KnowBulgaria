@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 def location_directory_path(instance, filename):
-    return f'location_{instance.id}/{filename}'
+    return f'location_{instance.name}/{filename}'
 
 
 def profile_directory_path(instance, filename):

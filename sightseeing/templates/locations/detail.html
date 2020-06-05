@@ -23,6 +23,8 @@
 {% endif %}
 
 
+<a href="{% url 'sightseeing:review:add' %}">Add review</a>
+
 <ol>
 {% for review in reviews %}
    <li><a href="{% url 'sightseeing:review:detail' review.id %}", style="color:green"> {{ review.location }} - by {{ review.user.username }}</a></li>
